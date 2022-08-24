@@ -13,8 +13,8 @@ echo $1 | grep -E -q '^[0-9]+\.[0-9]+\.[0-9]+$' || die "Version should match ^[0
 if [ -n "$1" ]; then
   git stash
   git pull
-  echo "Setting version to $1"
   pyprojpath="$DIR/../pyproject.toml"
+  echo "Setting version to $1 in $pyprojpath"
   sed -i '' "s/^version = \".*$/version = \"$1\"/" "$pyprojpath"
   git add "$pyprojpath"
   git commit -m "Version $1"
